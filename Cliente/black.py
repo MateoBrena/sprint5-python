@@ -1,9 +1,14 @@
-from Cuenta.cuenta import Cuenta
 from Cliente.cliente import Cliente
 from Tarjeta.debito import Debito
 from Tarjeta.credito import Credito
+from Cuenta.cajaAhorroPesos import CajaAhorroPesos
+from Cuenta.cajaAhorroDolares import CajaAhorroDolares
+from Cuenta.cuentaCorrientePesos import CuentaCorrientePesos
+from Cuenta.cuentaCorrienteDolares import CuentaCorrienteDolares
+from Cuenta.CuentaInversiones import CuentaInversiones
 
 class Black(Cliente):
+      
       def __init__(self,nombre,apellido,dni,nro_cliente):
             super().__init__(nombre,apellido,dni,nro_cliente)
             self.tipo_cliente = "Black"
@@ -13,7 +18,19 @@ class Black(Cliente):
                   "DNI: "+str(self.dni)+"\n"
                   "Tipo de cliente: "+self.tipo_cliente)
             
-      def crearTarjetaDebito(self,marcaTarjeta):
+      def altaCajaAhorroPesos(self):
+           self.cajaAhorroPesos = CajaAhorroPesos("caja de ahorro",0,"pesos")
+
+      def getSaldoCajaAhorroPesos(self):
+            return self.cajaAhorroPesos
+      
+      def altaCajaAhorroDolares(self):
+           self.cajaAhorroDolares = CajaAhorroDolares("caja de ahorro",0,"dolares")
+
+      def getSaldoCajaAhorroDolares(self):
+            return self.cajaAhorroDolares
+      
+      def altaTarjetaDebito(self,marcaTarjeta):
             if(marcaTarjeta == "Visa" or marcaTarjeta == "Mastercard" or marcaTarjeta == "Amex"):
                   self.tarjetaDebito = Debito(marcaTarjeta)
             else:
@@ -22,7 +39,7 @@ class Black(Cliente):
       def getTarjetaDebito(self):
             return self.tarjetaDebito
       
-      def crearTarjetaCredito(self,marcaTarjeta):
+      def altaTarjetaCredito(self,marcaTarjeta):
             if(marcaTarjeta == "Visa" or marcaTarjeta == "Mastercard" or marcaTarjeta == "Amex"):
                   self.tarjetaCredito = Credito(marcaTarjeta,500000,600000)
             else:

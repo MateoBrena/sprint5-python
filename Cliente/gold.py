@@ -1,9 +1,14 @@
-from Cuenta.cuenta import Cuenta
 from Cliente.cliente import Cliente
 from Tarjeta.debito import Debito
 from Tarjeta.credito import Credito
+from Cuenta.cajaAhorroPesos import CajaAhorroPesos
+from Cuenta.cajaAhorroDolares import CajaAhorroDolares
+from Cuenta.cuentaCorrientePesos import CuentaCorrientePesos
+from Cuenta.cuentaCorrienteDolares import CuentaCorrienteDolares
+from Cuenta.CuentaInversiones import CuentaInversiones
 
 class Gold(Cliente):
+
       def __init__(self,nombre,apellido,dni,nro_cliente):
             super().__init__(nombre,apellido,dni,nro_cliente)
             self.tipo_cliente = "Gold"
@@ -13,7 +18,19 @@ class Gold(Cliente):
                   "DNI: "+str(self.dni)+"\n"
                   "Tipo de cliente: "+self.tipo_cliente)
             
-      def crearTarjetaDebito(self,marcaTarjeta):
+      def altaCajaAhorroPesos(self):
+           self.cajaAhorroPesos = CajaAhorroPesos("caja de ahorro",0,"pesos")
+
+      def getSaldoCajaAhorroPesos(self):
+            return self.cajaAhorroPesos
+      
+      def getSaldoCajaAhorroDolares(self):
+            return self.cajaAhorroDolares
+      
+      def altaCajaAhorroDolares(self):
+           self.cajaAhorroDolares = CajaAhorroDolares("caja de ahorro",0,"dolares")
+            
+      def altaTarjetaDebito(self,marcaTarjeta):
             if(marcaTarjeta == "Visa" or marcaTarjeta == "Mastercard"):
                   self.tarjetaDebito = Debito(marcaTarjeta)
             else:
@@ -22,7 +39,7 @@ class Gold(Cliente):
       def getTarjetaDebito(self):
             return self.tarjetaDebito
       
-      def crearTarjetaCredito(self,marcaTarjeta):
+      def altaTarjetaCredito(self,marcaTarjeta):
             if(marcaTarjeta == "Visa" or marcaTarjeta == "Mastercard"):
                   self.tarjetaCredito = Credito(marcaTarjeta,100000,150000)
             else:

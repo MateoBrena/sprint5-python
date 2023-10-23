@@ -1,8 +1,9 @@
 class Cuenta:
       # generales, consulat saldo, etc, genérico de cuentas
-      def __init__(self,tipo,saldo):
+      def __init__(self,tipo,saldo,moneda):
             self.tipo = tipo
             self.saldo = saldo
+            self.moneda = moneda
 
       def __str__(self):
-            return "Cuenta "+self.tipo+". Saldo: "+str(self.saldo)
+            return "Cuenta "+self.tipo+". Saldo: "+str(self.saldo)+" "+self.moneda
