@@ -5,4 +5,4 @@ class CajaAhorroDolares(Cuenta):
             super().__init__(tipo,saldo,moneda)
     
     def __str__(self):
-          return "Cuenta "+self.tipo+". Saldo: "+str(self.saldo)+ " "+self.moneda
+          return "Cuenta: "+self.tipo+". Saldo: "+str(self.saldo)+ " "+self.moneda

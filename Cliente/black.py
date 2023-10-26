@@ -12,6 +12,10 @@ class Black(Cliente):
       def __init__(self,nombre,apellido,dni,nro_cliente):
             super().__init__(nombre,apellido,dni,nro_cliente)
             self.tipo_cliente = "Black"
+            self.limiteCajero = 100000
+            self.tarjetasCredito = []
+            self.tarjetasDebito = []
+
 
       def getInfo(self):
             print("Nombre: "+self.nombre+" "+self.apellido+"\n"
@@ -31,22 +35,28 @@ class Black(Cliente):
             return self.cajaAhorroDolares
       
       def altaTarjetaDebito(self,marcaTarjeta):
-            if(marcaTarjeta == "Visa" or marcaTarjeta == "Mastercard" or marcaTarjeta == "Amex"):
-                  self.tarjetaDebito = Debito(marcaTarjeta)
-            else:
+            if len(self.tarjetasDebito) < 5 and (marcaTarjeta == "Visa" or marcaTarjeta == "Mastercard" or marcaTarjeta == "Amex"):
+                  self.tarjetasDebito.append(Debito(marcaTarjeta))
+
+            elif len(self.tarjetasDebito) >= 5:
+                  print("Máxima cantidad de tarjetas de débito alcanzada")       
+
+            elif (marcaTarjeta != "Visa" and marcaTarjeta != "Mastercard") and marcaTarjeta != "Amex":
                   print("El cliente solo tiene acceso a tarjetas Mastercard, Visa o Amex") 
 
-      def getTarjetaDebito(self):
-            return self.tarjetaDebito
+      def getTarjetasDebito(self):
+            for i in range(len(self.tarjetasCredito)):
+                  print(str(self.tarjetasCredito[i])+"\n")
       
       def altaTarjetaCredito(self,marcaTarjeta):
-            if(marcaTarjeta == "Visa" or marcaTarjeta == "Mastercard" or marcaTarjeta == "Amex"):
-                  self.tarjetaCredito = Credito(marcaTarjeta,500000,600000)
+            if len(self.tarjetasCredito) < 3 and(marcaTarjeta == "Visa" or marcaTarjeta == "Mastercard" or marcaTarjeta == "Amex"):
+                  self.tarjetasCredito.append(Credito(marcaTarjeta,500000,600000))  
             else:
                   print("El cliente solo tiene acceso a tarjetas Mastercard, Visa o Amex") 
 
-      def getTarjetaCredito(self):
-            return self.tarjetaCredito
+      def getTarjetasCredito(self):
+            for i in range(len(self.tarjetasCredito)):
+                  print(str(self.tarjetasCredito[i])+"\n")
             
 """
 RESTRICCIONES
