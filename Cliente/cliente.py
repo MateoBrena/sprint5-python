@@ -7,7 +7,7 @@ class Cliente:
            self.nro_cliente = nro_cliente
 
 
-     def calcularMontoTotal(self,precioDolar,cantidad):
+     def calcularMontoTotal(precioDolar,cantidad): # Ej (350,200)
            impuestoPais = 0.3
            impuestoGanancias = 0.35
 
@@ -18,17 +18,14 @@ class Cliente:
            total = montoOperacion + pais + ganancias
 
            return total
-           
      
-
-     # métodos_de_cliente:
-    #def obtener_tarjetas_disponibles():
-    #def obtener_cuentas_disponibles():
-    #def realizar_transferencia():
-    #def obtener_limite_retiro_diario():
-
-    #obtener saldo, cuestiones generales, que sean común en todos los tipos de cliente.
-
-
-#class Transaccion:
- #    "Transacciones"
+     def descontarComision(monto, porcentajeComision): # Ej (1000,10)
+           comision = (porcentajeComision / 100) * monto
+           montoConDescuento = monto- comision
+           return montoConDescuento
+     
+     def CalcularPlazoFijo(monto,interes): # Ej (100,0.50)
+           montoConIntereses = monto * (interes + 1)
+           return montoConIntereses
+           
+           
