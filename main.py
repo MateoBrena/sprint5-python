@@ -32,8 +32,8 @@ cliente1.getSaldoCajaAhorroPesos()
 print()
 cliente1.getSaldoCajaAhorroDolares()
 print()
-cliente1.exportarResumenTransacciones()
-# cliente2.mostrarTransacciones()
+cliente1.exportarResumenTransacciones() #Genera el archivo .json con la información del cliente y todas sus transacciones
+# cliente1.mostrarTransacciones() #Muestra por consola las transacciones del cliente
 """
 
 
@@ -42,7 +42,6 @@ cliente2.getInfo()
 print()
 cliente2.altaCajaAhorroPesos()
 cliente2.altaCajaAhorroDolares()
-cliente2.altaCajaAhorroDolares() #No va a permitir crear más cajas de ahorro si el cliente no tiene ese beneficio, figurará transacción rechazada
 print()
 cliente2.getSaldoCajaAhorroPesos()
 print()
@@ -84,7 +83,7 @@ cliente3.altaCajaAhorroPesos()
 cliente3.altaCajaAhorroDolares()
 cliente3.altaCajaAhorroDolares() # Este cliente puede seguir creando cajas de ahorro hasta llegar al límite de 5
 cliente3.getSaldoCajaAhorroPesos(301) #Este cliente debe especificar nro de cuenta para consultar 
-# el saldo, de la caja de ahorro ya que posee más de una
+# el saldo de la caja de ahorro, enviar o recibir transferencias, retirar por caja y compra/venta de dólares ya que puede poseer más de una
 print()
 cliente3.getSaldoCajaAhorroDolares(302)
 print()
@@ -109,7 +108,7 @@ cliente3.altaTarjetaDebito("Mastercard")
 print()
 cliente3.compraTarjetaCredito("Visa",400000)
 print()
-cliente3.ventaDolar(200,301,302)
+cliente3.ventaDolar(200,301,302) #cantidad de dolares, caja de ahorro en pesos y caja de ahorro en dolares
 print()
 cliente3.altaCuentaCorrienteDolares()
 print()
